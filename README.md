@@ -2,7 +2,7 @@
 
 # Omniisan
 
-[Omniisan](https://omniisan.moe/) is a quick-and-dirty clone of
+[Omniisan](https://omniisan.com/) is a quick-and-dirty clone of
 [omnibuser](http://www.omnibuser.com/) which sadly shut down in July
 2020.
 
