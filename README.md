@@ -11,48 +11,25 @@ keeping things up-to-date.
 
 This tool has the following sites 'turned-on':
 
-    Spacebattles Sufficientvelocity
+- Spacebattles
+- Sufficientvelocity
 
 ## Quick Start
 
 On Debian assuming python >= 3.7:
 
-Install system dependencies:
-
-    apt install -y redis python3 python3-pip python3-virtualenv python3-dev build-essential
-
-Edit the config:
-
-    cd omniisan
-    cp settings.cfg.example settings.cfg
-    vi settings.cfg
-
-Install python dependencies:
-
-    make venv
-
-Run the development server:
-
-    make run
-
-And separately spin up at least one worker:
-
-    make run-worker
+    apt install -y redis python3 python3-pip python3-virtualenv python3-dev build-essential  # Install system dependencies
+    cp settings.cfg.example settings.cfg  # generate and edit config
+    make venv  # install python deps
+    make run  # run flask development server
+    make run-worker  # run worker
 
 Open it in the browser at [http:/localhost:5000/](http://localhost:5000/).
 
-## Decisions
+## Contributing
 
 Omniisan just calls fanficfare directly. My hope is that this
-interface is less likely to change.
+interface is less likely to change. Perhaps some nice person might
+want to write an adapter to call fanficfare directly.
 
-My hope is that someone writes an adaptor that allows for a nice
-progress display. I looked into it and it looked like a medium amount
-of work.
-
-## Disclaimer
-
-I am not a developer and never will be. I especially don't understand
-frontend.
-
-## Contributing
+Commits should be flake8 clean and formatted with black.
