@@ -3,12 +3,12 @@ import subprocess
 import json
 
 
-# TODO: Match the request delays of omnibuser
 def download(url, output_directory):
     args = [
         "fanficfare",
         "-j",  # output json
-        # -'c', 'fff_worker.ini',  # set a custom config file
+        "-c",
+        "../fanficfare_config.ini",
         url,
     ]
 
