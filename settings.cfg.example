@@ -12,3 +12,5 @@ OUTPUT_PATH = Path(__file__).resolve().parent / 'stories'
 OUTPUT_PATH.mkdir(exist_ok=True)
 
 REDISTOGO_URL = 'redis://localhost:6379'
+
+PATH_TO_FANFICFARE = 'fanficfare'

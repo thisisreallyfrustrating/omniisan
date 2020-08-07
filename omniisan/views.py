@@ -70,7 +70,11 @@ class Job(Resource):
 
         job = redis_q.enqueue_call(
             func=download,
-            args=(data["url"], app.config["OUTPUT_PATH"]),
+            args=(
+                data["url"],
+                app.config["OUTPUT_PATH"],
+                app.config["PATH_TO_FANFICFARE"],
+            ),
             timeout=180,
             result_ttl=5000,
         )

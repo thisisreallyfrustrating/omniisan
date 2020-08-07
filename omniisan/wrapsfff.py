@@ -3,9 +3,9 @@ import subprocess
 import json
 
 
-def download(url, output_directory):
+def download(url, output_directory, fanficfare_location="fanficfare"):
     args = [
-        "fanficfare",
+        fanficfare_location,
         "-j",  # output json
         "-c",
         "../fanficfare_config.ini",
