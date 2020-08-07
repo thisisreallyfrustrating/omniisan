@@ -30,6 +30,6 @@ Open it in the browser at [http:/localhost:5000/](http://localhost:5000/).
 
 Omniisan just calls fanficfare directly. My hope is that this
 interface is less likely to change. Perhaps some nice person might
-want to write an adapter to call fanficfare directly.
+want to write an adapter to use the lib directly. This would also allow progress to be monitored and displayed directly.
 
 Commits should be flake8 clean and formatted with black.
