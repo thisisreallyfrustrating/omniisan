@@ -112,7 +112,7 @@ class JobState(Resource):
                 )
                 # TODO queue deletion task
             else:
-                return {"done": True, "message": "Download failed.\n"}, 400
+                return {"done": True, "message": result['message']}, 400
         else:
             if job.is_started:
                 return {"done": False, "message": "Working on it. Hang in there."}
