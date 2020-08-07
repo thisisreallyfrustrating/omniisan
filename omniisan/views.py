@@ -68,14 +68,15 @@ class Job(Resource):
         # line needed for rq
         from omniisan.wrapsfff import download  # noqa: F811
 
-        job = redis_q.enqueue_call(
-            func=download,
+        job = redis_q.enqueue(
+            download,
             args=(
                 data["url"],
                 app.config["OUTPUT_PATH"],
                 app.config["PATH_TO_FANFICFARE"],
             ),
-            timeout=180,
+            ttl=60*60,
+            job_timeout='6m',
             result_ttl=5000,
         )
         return (
