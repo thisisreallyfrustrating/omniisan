@@ -93,14 +93,19 @@
 
         <div class="paper container" style="height:400px; overflow: auto;">
           <p style="margin-top: 0;"><strong>Notes</strong></p>
-          <p> <a href="http://www.omnibuser.com/">Omnibuser</a> sadly shut
-            down in July 2020. Omniisan is a quick-and-dirty clone of
-            omnibuser built to take advantage of the
-            excellent <a href="https://github.com/JimmXinu/FanFicFare">fanficfare</a>
-            tool.</p>
-          <p>The goal of this project is to be near zero maintenance for me so
-            it can live forever.</p>
-          <p>This tool currently will make ebooks for the following sites:</p>
+          <p>Omniisan is a quick-and-dirty clone
+          of <a href="http://www.omnibuser.com/">Omnibuser</a> which
+          sadly shut down in July 2020.</p>
+          <p>The goals of this project are (i) to require 'no'
+            maintanence by using fanficfare, (ii) to cost around $3/mo
+            to host, and (iii) to not grow significantly in size or
+            scope.</p>
+          <p>I suspect omnibuser's creator was silently and
+            thanklessly paying some medium-sized bills every month for
+            four years, not to mention fixing things whenever any of
+            the sites underwent minor cosmetic changes.</p>
+          
+          <p>Currently, I have enabled support for:</p>
           <ul>
             <li><a href="https://spacebattles.org/">Spacebattles</a></li>
             <li><a href="https://sufficientvelocity.org/">Sufficientvelocity</a></li>
@@ -109,14 +114,6 @@
             plugin for Calibre which is
             documented <a
               href="https://github.com/JimmXinu/FanFicFare/wiki/CalibrePlugin">here</a>.</p>
-          <p>The code for omnibuser can be
-            found <a href="https://github.com/valedan/omnibuser">here</a> and
-            would be a much more sensible place to start if anyone wanted to
-            make a proper go at things rather than contributing to my
-            spaghetti.</p>
-
-          <p style="margin-top: 0;"><strong>Contact</strong></p>
-          <p><bdo dir="rtl">gro.fds@otsirc</bdo></p>
         </div>
 
         <input v-if="makingRequest" class="modal-state" id="jobBox"
