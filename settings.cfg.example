@@ -1,0 +1,14 @@
+from pathlib import Path
+import os
+
+
+DEBUG = True
+SECRET_KEY = os.urandom(24)
+RECAPATCHA_SECRET_KEY = ''
+RECAPATCHA_CLIENT_KEY = ''
+G_ANALYTICS_KEY = ''
+
+OUTPUT_PATH = Path(__file__).resolve().parent / 'stories'
+OUTPUT_PATH.mkdir(exist_ok=True)
+
+REDISTOGO_URL = 'redis://localhost:6379'

@@ -1,0 +1,13 @@
+[Unit]
+Description=RQ workers for omniisan
+After=network.target
+
+[Service]
+User=omniisan
+WorkingDirectory=/home/omniisan/omniisan/
+Environment=OMNIISAN_SETTINGS=/home/omniisan/omniisan/settings.cfg
+ExecStart=/home/omniisan/omniisan/venv/bin/python omniisan/worker.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Omniisan fanfiction epubizer
+After=network.target
+
+[Service]
+User=omniisan
+WorkingDirectory=/home/omniisan/omniisan/
+Environment=OMNIISAN_SETTINGS=/home/omniisan/omniisan/settings.cfg
+Environment=FLASK_DEBUG=0
+ExecStart=/home/omniisan/omniisan/venv/bin/gunicorn -w 2 omniisan:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,148 @@
+<!doctype html>
+
+<html lang=en>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Omniisan</title> <meta name="description" content="Turns
+      popular fanfiction into epub" />
+    <link href="https://unpkg.com/papercss@1.7.0/dist/paper.min.css"
+      rel="stylesheet" />
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%%config['G_ANALYTICS_KEY']%%"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', '%%config['G_ANALYTICS_KEY']%%');
+    </script>
+
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      html, body { height: 100%; } .container, nav { opacity: 0.93; }
+      .bg-image { /* The image used */
+          background-image:
+              url("static/background.jpg"); /* Full height */
+          height: 100%;
+          
+          /* Center and scale the image nicely */
+          background-position: center;
+
+          background-repeat: no-repeat; 
+          background-size: cover; 
+      }
+      .g-recaptcha,
+      .g-recaptcha > div { margin: auto; width: 90%;}
+    </style>
+  </head>
+  <body class="bg-image">
+    <div id="app">
+
+      <nav class="border split-nav" style="margin-bottom: 20px;">
+        <div class="nav-brand">
+          <h3><a href="/">Omniisan.moe</a></h3>
+        </div>
+        <div class="collapsible">
+          <input id="collapsible1" type="checkbox" name="collapsible1">
+          <label for="collapsible1">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </label>
+          <div class="collapsible-body">
+            <ul class="inline">
+              <li><a href="https://github.com/thisisreallyfrustrating/omniisan">Contribute</a></li>
+              <li><a href="https://github.com/thisisreallyfrustrating/omniisan/issues">Issue?</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="paper container" style="margin-bottom: 20px;">
+        <h2 style="margin: 0 0 20px 0; font-size: 1.5rem;">Now you too
+          can have an epub for your favorite fanfic!</h2>
+
+        <div style="text-align: center">
+          <form class="job">
+            <div class="form-group">
+              <input type="text"
+                placeholder="https://forums.spacebattles.com/..." name="url"
+                v-model="url" style="display: inline; width: 80%;">
+              <button v-on:click.prevent="newJob" id="submitbtn" type="submit"
+                class="btn-secondary" value="submit" disabled>Get</button>
+            </div>
+
+
+                <div class="g-recaptcha"
+                     data-sitekey="%%config['RECAPATCHA_CLIENT_KEY']%%"
+                     data-callback="enableBtn"></div>
+              </form>
+              <p>
+                <strong>Enter a link to the story in the box above and hit Get.</strong>
+              </p>
+            </div>
+          </div>
+
+
+
+        <div class="paper container" style="height:400px; overflow: auto;">
+          <p style="margin-top: 0;"><strong>Notes</strong></p>
+          <p> <a href="http://www.omnibuser.com/">Omnibuser</a> sadly shut
+            down in July 2020. Omniisan is a quick-and-dirty clone of
+            omnibuser built to take advantage of the
+            excellent <a href="https://github.com/JimmXinu/FanFicFare">fanficfare</a>
+            tool.</p>
+          <p>The goal of this project is to be near zero maintenance for me so
+            it can live forever.</p>
+          <p>This tool currently will make ebooks for the following sites:</p>
+          <ul>
+            <li><a href="https://spacebattles.org/">Spacebattles</a></li>
+            <li><a href="https://sufficientvelocity.org/">Sufficientvelocity</a></li>
+          </ul>
+          <p>Where possible, rather than using this site, use the fanficfare
+            plugin for Calibre which is
+            documented <a
+              href="https://github.com/JimmXinu/FanFicFare/wiki/CalibrePlugin">here</a>.</p>
+          <p>The code for omnibuser can be
+            found <a href="https://github.com/valedan/omnibuser">here</a> and
+            would be a much more sensible place to start if anyone wanted to
+            make a proper go at things rather than contributing to my
+            spaghetti.</p>
+
+          <p style="margin-top: 0;"><strong>Contact</strong></p>
+          <p><bdo dir="rtl">gro.fds@otsirc</bdo></p>
+        </div>
+
+        <input v-if="makingRequest" class="modal-state" id="jobBox"
+          type="checkbox" checked>
+        <div class="modal">
+          <label class="modal-bg" for="jobBox"
+            v-on:click.stop.capture="closeJob"></label>
+          <div class="modal-body">
+            <img v-if="!storyUrl" src="static/loading.gif" width=30 height=30
+              style="display: inline; border: none;">
+            <h4 v-if="!storyUrl" class="modal-title" style="display:inline">Retrieving
+              your ebook.</h4>
+            <h4 v-if="storyUrl" class="modal-title" style="display:inline">Done.</h4>
+            <h4 v-if="done && !success" class="modal-title"
+              style="display:inline">Error.</h4>
+            <br v-if="!done" />
+            <br />
+            <p id="status-text" style="text-align: center" class="modal-text">{{
+              server_message }}</p>
+            <a v-if="storyUrl" v-bind:href="storyUrl" target="_blank">Click here if it didn't download.</a>
+          </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <script src="/static/app.js"></script>
+      </div>
+    </body>
+  </html>
