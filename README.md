@@ -1,3 +1,5 @@
+![header image](https://raw.githubusercontent.com/thisisreallyfrustrating/omniisan/master/readme-header.png)
+
 # Omniisan
 
 [Omniisan](https://omniisan.moe/) is a quick-and-dirty clone of
@@ -17,13 +19,13 @@ This tool has the following sites 'turned-on':
 ## Quick Start
 
 On Debian assuming python >= 3.7:
-
-    apt install -y redis python3 python3-pip python3-virtualenv python3-dev build-essential  # Install system dependencies
-    cp settings.cfg.example settings.cfg  # generate and edit config
-    make venv  # install python deps
-    make run  # run flask development server
-    make run-worker  # run worker
-
+```bash
+apt install -y redis python3 python3-pip python3-virtualenv python3-dev build-essential  # Install system dependencies
+cp settings.cfg.example settings.cfg  # generate and edit config
+make venv  # install python deps
+make run  # run flask development server
+make run-worker  # run worker
+```
 Open it in the browser at [http:/localhost:5000/](http://localhost:5000/).
 
 ## Contributing
